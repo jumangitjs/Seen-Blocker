@@ -5,7 +5,6 @@ var bgTypingBlock = true;
 chrome.storage.sync.get(['blockSeen', 'blockTyping', 'firstRun'], function(SeenBlock){
 	if (typeof SeenBlock.firstRun  == 'undefined') {
 		chrome.storage.sync.set({'blockSeen': bgSeenBlock, 'blockTyping': bgTypingBlock, 'firstRun': false}, function(){
-		console.log("Set First Run Preferences");
 		})
 	}
 	else {
@@ -18,7 +17,6 @@ chrome.storage.sync.get(['blockSeen', 'blockTyping', 'firstRun'], function(SeenB
 
 chrome.webRequest.onBeforeRequest.addListener(
 	function(details) { 
-	console.log("Seen attempt");
 		return {cancel: bgSeenBlock
   }
 }, { urls: ['*://*.facebook.com/*change_read_status*',
@@ -29,7 +27,6 @@ chrome.webRequest.onBeforeRequest.addListener(
             '*://*.messenger.com/*unread_threads*'] }, ['blocking'])
 			
 chrome.webRequest.onBeforeRequest.addListener(function(details) {
-	console.log("Typing status: " + bgTypingBlock);
   return {
     cancel: bgTypingBlock
   }
@@ -38,7 +35,6 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
 			
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
-	console.log("Request recived - SeenBlock = " + request.optBlockSeen + "; TypingBlock = " + request.optBlockTyping);
     bgSeenBlock = request.optBlockSeen;
 	bgTypingBlock = request.optBlockTyping;
 });			
