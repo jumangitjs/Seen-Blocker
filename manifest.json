@@ -1,15 +1,17 @@
 {
-	
 	"name": "Seen Blocker",
 	"version": "1.0",
 	"manifest_version": 2,
 	"background": {
-      "scripts": ["background.js"]
-   },
-   "icons": { 
-			"16": "ico_16.png",
-			"48": "ico_48.png",
-			"128": "ico_128.png" },
+		"scripts": [
+			"background.js"
+		]
+	},
+	"icons": {
+		"16": "ico_16.png",
+		"48": "ico_48.png",
+		"128": "ico_128.png"
+	},
 	"description": "Blocks the 'Seen' feature on Facebook Messages.",
 	"browser_action": {
 		"default_icon": "ico_128.png",
@@ -18,10 +20,9 @@
 	"options_page": "options.html",
 	"permissions": [
 		"storage",
-		"webRequest", 
-		"webRequestBlocking", 
+		"webRequest",
+		"webRequestBlocking",
 		"*://*.facebook.com/*",
 		"*://*.messenger.com/*"
 	]
-
 }
