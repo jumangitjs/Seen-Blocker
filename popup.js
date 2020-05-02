@@ -10,13 +10,7 @@ function save() {
 chrome.extension.sendRequest({optBlockSeen: BlockSeen, optBlockTyping: BlockTyping}, function(response) {
   // do something with response.addr...
 });
-	
-	
-	console.log("Seen is: " + BlockSeen);
-	console.log("Typing is: " + BlockSeen);
-	
 	chrome.storage.sync.set({'blockSeen': BlockSeen, 'blockTyping': BlockTyping}, function(){
-	console.log("Synced");
 	});
 
 }
